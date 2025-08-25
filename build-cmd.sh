@@ -51,7 +51,7 @@ case "$AUTOBUILD_PLATFORM" in
                 fi
                 plainopts="$(remove_switch /GR $(remove_cxxstd $opts))"
 
-                cmake -G "$AUTOBUILD_WIN_CMAKE_GEN" -A "$platform_target" $SSL_SOURCE_DIR -DBUILD_SHARED_LIBS=OFF \
+                cmake -G "$AUTOBUILD_WIN_CMAKE_GEN" -A $(cygpath -m "$platform_target") $SSL_SOURCE_DIR -DBUILD_SHARED_LIBS=OFF \
                         -DCMAKE_CONFIGURATION_TYPES="Debug" \
                         -DCMAKE_C_FLAGS_DEBUG="$plainopts" \
                         -DCMAKE_CXX_FLAGS_DEBUG="$opts /EHsc" \
@@ -79,7 +79,7 @@ case "$AUTOBUILD_PLATFORM" in
                 fi
                 plainopts="$(remove_switch /GR $(remove_cxxstd $opts))"
 
-                cmake -G "$AUTOBUILD_WIN_CMAKE_GEN" -A "$platform_target" $SSL_SOURCE_DIR -DBUILD_SHARED_LIBS=OFF \
+                cmake -G "$AUTOBUILD_WIN_CMAKE_GEN" -A $(cygpath -m "$platform_target") $SSL_SOURCE_DIR -DBUILD_SHARED_LIBS=OFF \
                         -DCMAKE_CONFIGURATION_TYPES="Release" \
                         -DCMAKE_C_FLAGS="$plainopts" \
                         -DCMAKE_CXX_FLAGS="$opts /EHsc" \
