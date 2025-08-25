@@ -113,8 +113,8 @@ case "$AUTOBUILD_PLATFORM" in
             pushd "build_$arch"
                 CFLAGS="$cc_opts" \
                 LDFLAGS="$ld_opts" \
-                cmake $SSL_SOURCE_DIR -G "Xcode" -DBUILD_SHARED_LIBS:BOOL=OFF \
-                    -DCMAKE_CONFIGURATION_TYPES="Release" \
+                cmake $SSL_SOURCE_DIR -G "Ninja" -DBUILD_SHARED_LIBS:BOOL=OFF \
+                    -DCMAKE_BUILD_TYPE="Release" \
                     -DCMAKE_C_FLAGS="$cc_opts" \
                     -DCMAKE_CXX_FLAGS="$cc_opts" \
                     -DCMAKE_INSTALL_PREFIX="$stage" \
