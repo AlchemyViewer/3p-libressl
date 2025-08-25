@@ -113,7 +113,7 @@ case "$AUTOBUILD_PLATFORM" in
             pushd "build_$arch"
                 CFLAGS="$cc_opts" \
                 LDFLAGS="$ld_opts" \
-                cmake .. -G "Xcode" -DBUILD_SHARED_LIBS:BOOL=OFF \
+                cmake $SSL_SOURCE_DIR -G "Xcode" -DBUILD_SHARED_LIBS:BOOL=OFF \
                     -DCMAKE_CONFIGURATION_TYPES="Release" \
                     -DCMAKE_C_FLAGS="$cc_opts" \
                     -DCMAKE_CXX_FLAGS="$cc_opts" \
@@ -146,7 +146,7 @@ case "$AUTOBUILD_PLATFORM" in
         # Release
         mkdir -p "build"
         pushd "build"
-            cmake .. -GNinja -DBUILD_SHARED_LIBS:BOOL=OFF \
+            cmake $SSL_SOURCE_DIR -GNinja -DBUILD_SHARED_LIBS:BOOL=OFF \
                 -DCMAKE_BUILD_TYPE="Release" \
                 -DCMAKE_C_FLAGS="$(remove_cxxstd $opts)" \
                 -DCMAKE_CXX_FLAGS="$opts" \
